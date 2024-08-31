@@ -4,10 +4,6 @@
 #include <stdio.h>
 #include "distance.h"
 
-void print_welcome_text(){
-    printf("Distance conversions\n");
-}
-
 void print_unit_options(){
     printf("Miles(1) ");
     printf("Foot(2) ");
@@ -48,23 +44,23 @@ int wait_for_status(){
 
 void print_distance_menu() {
     int status = 1;
-    print_welcome_text();
+    printf("Længde omregner\n");
     float result;
     char *descriptor;
     int from_unit = -1, to_unit = -1, value = -1;
     while (status) {
-        printf("Select source unit:\n");
+        printf("Hvilken enhed vil du konvertere fra?\n");
         print_unit_options();
         from_unit = read_unit();
-        printf("Select destination unit:\n");
+        printf("Hvilken enhed vil du konvertere til?\n");
         print_unit_options();
         to_unit = read_unit();
-        printf("Select value: ");
+        printf("Indtast værdi: ");
         value = read_value();
         result = convert_units(from_unit,to_unit,value);
         descriptor = unit_descriptor(to_unit,result);
-        printf("Your result is: %f %s\n\n",result,descriptor);
-        printf("Proceed? (*,Xx)");
+        printf("Dit resultat: %f %s\n\n",result,descriptor);
+        printf("Fortsæt? (*,Xx)");
         status = wait_for_status();
     }
 }
