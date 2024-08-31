@@ -22,8 +22,10 @@ int format_input(char raw){
     int numeric = code - 48;
     if(numeric >= 1 && numeric <= 3)
         return numeric;
-    else
+    else if(raw == 'X' || raw == 'x')
         return 4;
+    else
+        return -1;
 }
 
 void printMenu()
@@ -45,7 +47,8 @@ int main()
         selection = format_input(raw);
         if(selection == 4)
             break;
-        handle_choice(selection);
+        else if(selection != -1)
+            handle_choice(selection);
     }
     return 0;
 }
