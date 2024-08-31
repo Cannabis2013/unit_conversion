@@ -5,9 +5,9 @@ void handle_choice(int input){
     if(input == 1)
         print_distance_menu();
     else if(input == 2)
-        printf("Du valgte vægtenheder");
+        printf("Du valgte vægtenheder\n");
     else if(input == 3)
-        printf("Du valgte pikstørrelser");
+        printf("Du valgte Næsestørrelser\n");
 }
 
 char read_input(){
@@ -31,10 +31,10 @@ int format_input(char raw){
 void printMenu()
 {
     printf("Menu:\n");
-    printf("\t1 - Konverter længdeenheder\n");
-    printf("\t2 - Konverter vægtenheder\n");
-    printf("\t3 - Konverter pikstørrelser\n");
-    printf("\t* - Slut\n");
+    printf("\t1 \t- Konverter længdeenheder\n");
+    printf("\t2 \t- Konverter vægtenheder\n");
+    printf("\t3 \t- Konverter pikstørrelser\n");
+    printf("\tx \t- Slut\n");
 }
 
 int main()

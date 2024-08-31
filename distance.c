@@ -1,9 +1,9 @@
 #include "distance.h"
 
 #ifdef USE_METRIC_CALC
-#define MILE_M_UNIT 1600 // 1 mile ~= 1600 meters
-#define FOOT_M_UNIT 0.3048 // 1 foot ~= 0.3048 meters
-#define YARD_M_UNIT 0.9144 // 1 yard ~= 0.9144 meters
+#define UK_MILE_M_UNIT 1600 // 1 mile ~= 1600 meters
+#define UK_FOOT_M_UNIT 0.3048 // 1 foot ~= 0.3048 meters
+#define UK_YARD_M_UNIT 0.9144 // 1 yard ~= 0.9144 meters
 
 #define MILE_DESCRIPTOR 1
 #define FOOT_DESCRIPTOR 2
@@ -13,11 +13,11 @@
 float to_meters(int from_unit, float value){
     switch (from_unit) {
     case 1:
-        return value * MILE_M_UNIT;
+        return value * UK_MILE_M_UNIT;
     case 2:
-        return value * FOOT_M_UNIT;
+        return value * UK_FOOT_M_UNIT;
     case 3:
-        return value * YARD_M_UNIT;
+        return value * UK_YARD_M_UNIT;
     default:
         return value;
     }
@@ -27,13 +27,13 @@ float from_meters(int to_unit, float value){
     float result;
     switch (to_unit) {
     case 1:
-        result = value / MILE_M_UNIT;
+        result = value / UK_MILE_M_UNIT;
         break;
     case 2:
-        result = value / FOOT_M_UNIT;
+        result = value / UK_FOOT_M_UNIT;
         break;
     case 3:
-        result =value / YARD_M_UNIT;
+        result =value / UK_YARD_M_UNIT;
         break;
     default:
         result = value;
@@ -58,7 +58,7 @@ char *unit_descriptor(int unit, int value) {
     else if(unit == METER_DESCRIPTOR)
         descriptor = value > 0 ? "meters" : "meter";
     else
-        descriptor = "dicksizes";
+        descriptor = "noses";
     return descriptor;
 }
 #endif
