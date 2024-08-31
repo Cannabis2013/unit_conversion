@@ -1,34 +1,51 @@
-#include "menu_ui.h"
 #include <stdio.h>
 #include "distance_ui.h"
 
-int processInput(int input){
-    switch (input) {
-    case 1:
+void handle_choice(int input){
+    if(input == 1)
         print_distance_menu();
-        break;
-    case 2:
+    else if(input == 2)
         printf("Du valgte vægtenheder");
-        break;
-    case 3:
+    else if(input == 3)
         printf("Du valgte pikstørrelser");
-        break;
-    case 4:
-        return 0;
-    default:
-        break;
-    }
-    return 1;
+}
+
+char read_input(){
+    int accepted = 0;
+    char input;
+    scanf(" %c",&input);
+    return input;
+}
+
+int format_input(char raw){
+    int code = (int) raw;
+    int numeric = code - 48;
+    if(numeric >= 1 && numeric <= 3)
+        return numeric;
+    else
+        return 4;
+}
+
+void printMenu()
+{
+    printf("Menu:\n");
+    printf("\t1 - Konverter længdeenheder\n");
+    printf("\t2 - Konverter vægtenheder\n");
+    printf("\t3 - Konverter pikstørrelser\n");
+    printf("\t* - Slut\n");
 }
 
 int main()
 {
-    int status = 1;
-    int input = -1;
-    processInput(input);
-    while (status > 0) {
-        input = printMenu();
-        status = processInput(input);
+    int selection;
+    char raw = -1;
+    while (1) {
+        printMenu();
+        raw = read_input();
+        selection = format_input(raw);
+        if(selection == 4)
+            break;
+        handle_choice(selection);
     }
     return 0;
 }
