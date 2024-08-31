@@ -12,6 +12,10 @@ Compiles and runs on Debian 12
 ## Build instructions
 Run the following commands in the terminal in order to build:  
 Using GCC:    
-`gcc -o converter *.h *.c`  
+```bash
+gcc -o converter *.h *.c
+```  
 Using CMake  
-`cmake . && cmake --build .`
+```bash
+cmake . && cmake --build .
+```
