@@ -5,21 +5,24 @@
 #include "distance.h"
 
 void print_unit_options(){
-    printf("Miles(1) ");
-    printf("Foot(2) ");
-    printf("Yard(3) ");
-    printf("Meters(4) ");
+    int count = supported_count();
+    char **units = supported_units();
+    for (int i = 0; i < count; ++i) {
+        char *unit = units[i];
+        printf("%s(%d) ",unit,i + 1);
+    }
 }
 
 int read_unit(){
     char g = '4';
     int input;
+    int supportedCount = supported_count();
     while (scanf(" %c",&g)) {
         input = (int) g - 48;
-        if(input >= 1 && input <= 4)
+        if(input >= 1 && input <= supportedCount)
             return input;
         else
-            printf("Vælg et tal mellem 0 og 5!\n");
+            printf("Vælg et tal mellem 0 og %d!\n",supportedCount + 1);
     }
     input = (int) g;
     return input - 48;
@@ -43,7 +46,7 @@ int wait_for_input(){
 }
 
 int get_unit(char *msg){
-    printf("Hvilken enhed vil du konvertere fra?\n");
+    printf("%s",msg);
     print_unit_options();
     return read_unit();
 }
