@@ -30,7 +30,7 @@ int format_input(char raw){
 
 void printMenu()
 {
-    printf("Menu:\n");
+    printf("\033[5mMenu:\033[0m\n");
     printf("\t1 \t- Konverter længdeenheder\n");
     printf("\t2 \t- Konverter vægtenheder\n");
     printf("\t3 \t- Konverter pikstørrelser\n");

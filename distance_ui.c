@@ -48,21 +48,27 @@ int get_unit(char *msg){
     return read_unit();
 }
 
+float get_value(){
+    printf("Indtast værdi: ");
+    return read_value();
+}
+
+void print_result(int from_unit, int to_unit,float value){
+    float result = convert_units(from_unit,to_unit,value);
+    char *descriptor = unit_descriptor(to_unit,result);
+    printf("Dit resultat: %f %s\n\n",result,descriptor);
+    printf("Fortsæt? (*,Xx)");
+}
+
 void print_distance_menu() {
     int status = 1;
     printf("Længde omregner\n");
-    float result;
-    char *descriptor;
     int from_unit = -1, to_unit = -1, value = -1;
     while (status) {
         from_unit = get_unit("Hvilken enhed vil du konvertere fra?\n");
         to_unit = get_unit("Hvilken enhed vil du konvertere til?\n");
-        printf("Indtast værdi: ");
-        value = read_value();
-        result = convert_units(from_unit,to_unit,value);
-        descriptor = unit_descriptor(to_unit,result);
-        printf("Dit resultat: %f %s\n\n",result,descriptor);
-        printf("Fortsæt? (*,Xx)");
+        value = get_value();
+        print_result(from_unit,to_unit,value);
         status = wait_for_input();
     }
 }

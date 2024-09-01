@@ -8,7 +8,8 @@ add_executable(converter converter.c
     distance.h
     distance.c
     distance_ui.h
-    distance_ui.c)
+    distance_ui.c
+)
 
 include(GNUInstallDirs)
 install(TARGETS converter

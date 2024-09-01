@@ -25,20 +25,14 @@ float to_meters(int from_unit, float value){
 
 float from_meters(int to_unit, float value){
     float result;
-    switch (to_unit) {
-    case 1:
+    if(to_unit == 1)
         result = value / UK_MILE_M_UNIT;
-        break;
-    case 2:
+    else if(to_unit == 2)
         result = value / UK_FOOT_M_UNIT;
-        break;
-    case 3:
-        result =value / UK_YARD_M_UNIT;
-        break;
-    default:
+    else if(to_unit == 3)
+        result = value / UK_YARD_M_UNIT;
+    else
         result = value;
-        break;
-    }
     return result;
 }
 
