@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include "distance_ui.h"
 
+#define CSI_CLEAR_SCREEN "\033[H;\033[2J"
+
 void handle_choice(int input){
     if(input == 1)
-        print_distance_menu();
+        distance_main();
     else if(input == 2)
         printf("Du valgte vægtenheder\n");
     else if(input == 3)
@@ -30,7 +32,8 @@ int format_input(char raw){
 
 void printMenu()
 {
-    printf("\033[5mMenu:\033[0m\n");
+    printf(CSI_CLEAR_SCREEN);
+    printf("Menu:\033[0m\n");
     printf("\t1 \t- Konverter længdeenheder\n");
     printf("\t2 \t- Konverter vægtenheder\n");
     printf("\t3 \t- Konverter pikstørrelser\n");

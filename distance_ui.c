@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include "distance.h"
 
+#define CSI_CLEAR_SCREEN "\033[H;\033[2J"
+
 void print_unit_options(){
     int count = supported_count();
     char **units = supported_units();
@@ -28,12 +30,6 @@ int read_unit(){
     return input - 48;
 }
 
-float read_value(){
-    float input = -1;
-    scanf("%f",&input);
-    return input;
-}
-
 int wait_for_input(){
     char input;
     while (scanf(" %c",&input)) {
@@ -53,7 +49,9 @@ int get_unit(char *msg){
 
 float get_value(){
     printf("Indtast værdi: ");
-    return read_value();
+    float input = -1;
+    scanf("%f",&input);
+    return input;
 }
 
 void print_result(int from_unit, int to_unit,float value){
@@ -63,8 +61,9 @@ void print_result(int from_unit, int to_unit,float value){
     printf("Fortsæt? (*,Xx)");
 }
 
-void print_distance_menu() {
+void distance_main() {
     int status = 1;
+    printf(CSI_CLEAR_SCREEN);
     printf("Længde omregner\n");
     int from_unit = -1, to_unit = -1, value = -1;
     while (status) {
@@ -73,6 +72,7 @@ void print_distance_menu() {
         value = get_value();
         print_result(from_unit,to_unit,value);
         status = wait_for_input();
+        printf(CSI_CLEAR_SCREEN);
     }
 }
 

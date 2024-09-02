@@ -1,8 +1,6 @@
 #include "distance.h"
 #include <stdlib.h>
 
-#ifdef USE_METRIC_CALC
-
 #define SUPPORTED_COUNT 6
 
 #define UK_MILE_M_UNIT 1600 // 1 mile ~= 1600 meters
@@ -89,4 +87,3 @@ char **supported_units() {
 int supported_count() {
     return SUPPORTED_COUNT;
 }
-#endif

@@ -3,8 +3,6 @@ cmake_minimum_required(VERSION 3.16)
 project(converter LANGUAGES C)
 
 add_executable(converter converter.c
-
-
     distance.h
     distance.c
     distance_ui.h
