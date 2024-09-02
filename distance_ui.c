@@ -21,7 +21,9 @@ int read_unit(){
     int supportedCount = supported_count();
     while (scanf(" %c",&g)) {
         input = (int) g - 48;
-        if(input >= 1 && input <= supportedCount)
+        if(g == 'x' || g == 'X')
+            return -1;
+        else if(input >= 1 && input <= supportedCount)
             return input;
         else
             printf("Vælg et tal mellem 0 og %d!\n",supportedCount + 1);
@@ -50,8 +52,8 @@ int get_unit(char *msg){
 float get_value(){
     printf("Indtast værdi: ");
     float input = -1;
-    scanf("%f",&input);
-    return input;
+    int result = scanf("%f",&input);
+    return result ? input : -1;
 }
 
 void print_result(int from_unit, int to_unit,float value){
@@ -68,8 +70,14 @@ void distance_main() {
     int from_unit = -1, to_unit = -1, value = -1;
     while (status) {
         from_unit = get_unit("Hvilken enhed vil du konvertere fra?\n");
+        if(from_unit == -1)
+            break;
         to_unit = get_unit("Hvilken enhed vil du konvertere til?\n");
+        if(to_unit == -1)
+            break;
         value = get_value();
+        if(value == -1)
+            break;
         print_result(from_unit,to_unit,value);
         status = wait_for_input();
         printf(CSI_CLEAR_SCREEN);
