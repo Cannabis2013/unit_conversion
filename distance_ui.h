@@ -5,6 +5,6 @@
 #define USE_SIMPLE_FORMATTING
 #endif
 
-void distance_main();
+int distance_main();
 
 #endif // DISTANCE_UI_H

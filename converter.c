@@ -3,13 +3,14 @@
 
 #define CSI_CLEAR_SCREEN "\033[H;\033[2J"
 
-void handle_choice(int input){
+int handle_choice(int input){
     if(input == 1)
-        distance_main();
+        return distance_main();
     else if(input == 2)
         printf("Du valgte vægtenheder\n");
     else if(input == 3)
         printf("Du valgte Næsestørrelser\n");
+    return 1;
 }
 
 char read_input(){
@@ -42,16 +43,17 @@ void printMenu()
 
 int main()
 {
+    int status = 1;
     int selection;
     char raw = -1;
-    while (1) {
+    while (status >= 0) {
         printMenu();
         raw = read_input();
         selection = format_input(raw);
         if(selection == 4)
-            break;
-        else if(selection != -1)
-            handle_choice(selection);
+            return 0;
+        if(selection != -1)
+            status = handle_choice(selection);
     }
     return 0;
 }
