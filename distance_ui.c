@@ -1,10 +1,8 @@
 #include "distance_ui.h"
-#ifdef USE_SIMPLE_FORMATTING
-
 #include <stdio.h>
 #include "distance.h"
 
-#define CSI_CLEAR_SCREEN "\033[H;\033[2J\n"
+#define CSI_CLEAR_SCREEN "\033[H\033[J"
 
 void print_intro_screen(){
     printf(CSI_CLEAR_SCREEN);
@@ -66,7 +64,7 @@ float get_value(){
     printf("Indtast værdi: ");
     float input = -1;
     int result = scanf("%f",&input);
-    return result ? input : -1;
+    return result ? input : 0;
 }
 
 void print_result(int from_unit, int to_unit,float value){
@@ -96,5 +94,3 @@ int distance_main() {
     }
     return status;
 }
-
-#endif

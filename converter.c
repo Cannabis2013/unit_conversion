@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "distance_ui.h"
 
-#define CSI_CLEAR_SCREEN "\033[H;\033[2J"
+#define CSI_CLEAR_SCREEN "\033[H\033[J"
 
 int handle_choice(int input){
     if(input == 1)
